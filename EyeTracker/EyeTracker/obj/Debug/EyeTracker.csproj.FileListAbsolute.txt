@@ -1,0 +1,11 @@
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\bin\Debug\Tobii.EyeX.Client.dll
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\bin\Debug\EyeTracker.exe.config
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\bin\Debug\EyeTracker.exe
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\bin\Debug\EyeTracker.pdb
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\bin\Debug\Tobii.Interaction.Model.dll
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\bin\Debug\Tobii.Interaction.Net.dll
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\obj\Debug\EyeTracker.csprojAssemblyReference.cache
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\obj\Debug\EyeTracker.csproj.CoreCompileInputs.cache
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\obj\Debug\EyeTracker.csproj.CopyComplete
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\obj\Debug\EyeTracker.exe
+c:\users\corey rigney\source\repos\EyeTracker\EyeTracker\obj\Debug\EyeTracker.pdb
