@@ -29,6 +29,7 @@ namespace EyeTracker
                 if ((x >= zone.Value.X && x <= zone.Value.Width) && (y >= zone.Value.Y && y <= zone.Value.Height))
                 {
                     Console.WriteLine($"Eyes looking at Zone {zone.Value.Name}");
+                    return;
                 }
             }
         }
