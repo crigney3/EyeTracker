@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tobii.Interaction;
+using System.Net;
+using System.Net.Http;
+using System.Web;
+using System.Web.Http;
+using Flurl;
+using Flurl.Http;
 
 namespace EyeTracker
 {
@@ -12,6 +18,8 @@ namespace EyeTracker
         public Dictionary<string, Zone> zoneList;
         Host host = new Host();
         public GazePointDataStream gazePointDataStream;
+        HttpClient client = new HttpClient();
+        
 
         /// <summary>
         /// Initialize the tracker with a new GazePointStream, which must be initialized for the tracker to collect data
@@ -22,18 +30,35 @@ namespace EyeTracker
             this.zoneList = new Dictionary<string, Zone>();
         }
 
+        /// <summary>
+        /// ZoneTracker runs the actual check of your eyes' locations vs. the zones in the list.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public void ZoneTracker(double x, double y)
         {
-            foreach(KeyValuePair<string, Zone> zone in this.zoneList)
+            client.BaseAddress = new Uri("http://musicsystem-imagine-rit-music-player.cs.house/volume?volume=up");
+            int zoneOut = 0;
+            foreach (KeyValuePair<string, Zone> zone in this.zoneList)
             {
                 if ((x >= zone.Value.X && x <= zone.Value.Width) && (y >= zone.Value.Y && y <= zone.Value.Height))
                 {
-                    Console.WriteLine($"Eyes looking at Zone {zone.Value.Name}");
+                    zoneOut++;
                     return;
                 }
             }
+
+            if (zoneOut == 0)
+            {
+                VolumeUp();
+            }
         }
 
+        /// <summary>
+        /// Literally just prints where your eyes are looking
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public void UncalibratedZoneTracker(double x, double y)
         {
             Console.WriteLine("Eyes currently looking at Point {" + x + ", " + y + "}");
@@ -47,8 +72,8 @@ namespace EyeTracker
                 zoneList.Add(name, newZone);
                 Console.WriteLine($"New Zone {name} added at {x}, {y} with a width {width} and a height of {height}");
             }
-            
-            
+
+
         }
 
         public void Calibrate()
@@ -99,6 +124,14 @@ namespace EyeTracker
 
             Console.WriteLine("Calibration for Car completed.");
             Console.WriteLine();
+        }
+
+        public async void VolumeUp()
+        {
+            var responseString = await "http://musicsystem-imagine-rit-music-player.cs.house/volume"
+             .PostUrlEncodedAsync(new { volume = "up" })
+             .ReceiveString();
+            Console.WriteLine(responseString);
         }
     }
 }

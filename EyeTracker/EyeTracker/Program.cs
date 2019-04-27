@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tobii.Interaction;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Flurl;
 
 namespace EyeTracker
 {
@@ -11,9 +15,8 @@ namespace EyeTracker
     {
         static void Main(string[] args)
         {
-            /*
-             *Setup HTTP libraries 
-             */
+           
+
             Console.WriteLine("Welcome to the Eye Tracker test console. To calibrate for screens, type 'c'.");
             Console.WriteLine("To calibrate for any car, type 'car'.");
 
